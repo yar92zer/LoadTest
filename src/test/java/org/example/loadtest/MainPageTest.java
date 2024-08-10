@@ -9,8 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import tests.MyWait;
 
 import java.time.Duration;
 
@@ -39,8 +38,8 @@ public class MainPageTest {
     public void enable() {
         driver.get("https://demoqa.com/dynamic-properties");
         By button = By.cssSelector("#visibleAfter");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.elementToBeClickable(button));
+
+        MyWait myWait = MyWait.myWait(driver, 5);
         WebElement disButton = driver.findElement(button);
         assertTrue(disButton.isEnabled(), "Кнопка нет после 5 сек");
     }
